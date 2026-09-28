@@ -366,6 +366,7 @@ jobs:
       run: |
         set -x
         sudo cmake --build build -- install
+        if [[ "${RUNNER_OS}" == "Linux" ]]; then sudo ldconfig; fi
         # GCC does not know how to refer to shared libraries properly
         export CC=clang
         export CXX=clang++
